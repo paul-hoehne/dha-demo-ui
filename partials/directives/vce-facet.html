@@ -1,0 +1,10 @@
+<h3>{{facet.name | uncamel}}</h3>
+<div class='list-group'>
+	<a class='list-group-item' ng-class="{active: searchParameters.facets[facet.name][value.name]}" 
+		ng-repeat="value in facet.values" ng-click='toggleFacet(facet.name, value.name)'>
+		<div class='row'>
+			<div class='col-sm-9'>{{value.name}}</div>
+			<div class='col-sm-3'><p class='text-right'>{{value.count}}</p></div>
+		</div>
+	</a>
+</div>

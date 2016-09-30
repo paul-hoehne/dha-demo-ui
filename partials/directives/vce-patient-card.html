@@ -1,0 +1,20 @@
+<h4>Details</h4>
+<div ng-repeat='binding in patient.results.bindings'>
+	<div ng-if='binding.firstName'>
+		<div class='col-sm-5'><b>First Name</b></div>
+		<div class='col-sm-7'>{{binding.firstName.value}}</div>
+	</div>
+	<div ng-if='binding.lastName'>
+		<div class='col-sm-5'><b>Last Name</b></div>
+		<div class='col-sm-7'>{{binding.lastName.value}}</div>
+	</div>
+	<div ng-if='binding.gender'>
+		<div class='col-sm-5'><b>Gender</b></div>
+		<div class='col-sm-7'>{{binding.gender.value}}</div>
+	</div>
+	<div ng-if='binding.edipn'>
+		<div class='col-sm-5'><b>EDI PN</b></div>
+		<div class='col-sm-7'>{{binding.edipn.value}}</div>
+	</div>
+</div>
+<small>details from triples</small>

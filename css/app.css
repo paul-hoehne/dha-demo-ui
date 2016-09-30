@@ -1,0 +1,21 @@
+.vce-logo {
+	border-radius: 50%;
+	text-align: center;
+	width: 1.1em;
+	height: 1.1em;
+}
+
+.vce-patient {
+	background-color: goldenrod;
+	color: white;
+}
+
+.vce-encounter {
+	background-color: blue;
+	color: white;
+}
+
+.vce-match {
+	font-weight: bold;
+	color: darkred;
+}

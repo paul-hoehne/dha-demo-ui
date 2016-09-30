@@ -1,0 +1,90 @@
+<div class="container">
+	<div class='row'>
+		<h1>Search</h1>
+	</div>
+</div>
+
+<div class='container'>
+	<div class='row'>
+		<div class='col-sm-3'><br/></div>
+		<div class='col-sm-9'>
+			<form>
+				<div class='input-group'>
+					<input type='text' name='qtext' class='form-control' ng-model='searchParameters.qtext'
+						aria-label="Search text input">
+					<div class="input-group-btn">
+						<button aria-label="Start search button" class="btn btn-default"
+							ng-click="search()">Search</button>
+						<button aria-label='Clear search button' class='btn btn-default' 
+							ng-click="clear()">Clear</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class='container'>
+	<div class='row'>
+		<div class='col-sm-12'>
+			<div class='pull-left'>
+				<h5>Total: {{data.total}}</h5>
+			</div>
+			<div class='pull-right'>
+				<ul uib-pagination class='pagination-sml' ng-model='searchParameters.currentPage' 
+					total-items='data.total' ng-change='pageChanged()' 
+					max-size='5', boundary-link-numbers='true'></ul>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-sm-3'>
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="facet in data.facets">
+					<vce-facet></vce-facet>
+				</li>
+			</ul>
+		</div>
+		<div class='col-sm-5'>
+			<div ng-repeat="result in data.results" >
+				<div ng-switch="result.data.type">
+					<vce-patient ng-switch-when="patient" patient='result' 
+						ng-click='baseballCard(result.data.id)'></vce-patient>
+					<vce-encounter ng-switch-when="encounter" encounter='result'
+						ng-click='selectObject(result.uri)'></vce-encounter>
+					<div ng-switch-default><h4>Unknown</h4></div>
+				</div>
+			</div>
+		</div>
+		<div class='col-sm-4'>
+			<vce-patient-card ng-if="patientCard" patient='patientCard'></vce-patient-card>
+			<div ng-if="details.encounter">
+				<h4>Encounter {{details.id}}</h4>
+				<div ng-if='details.encounter.visitDate' class='row'>
+					<div class='col-sm-5'><b>Visit Date</b></div>
+					<div class='col-sm-7'>{{details.encounter.visitDate | date:'shortDate' }}</div>
+				</div>
+				<div ng-if='details.encounter.procedureSummary' 
+					class='col-sm-12'><b>Procedure:</b>{{details.encounter.procedureSummary}}</div>
+				<div ng-if='details.encounter.diagnosisSummary' 
+						class='col-sm-12'><b>Diagnosis:</b>{{details.encounter.diagnosisSummary}}</div>
+				<div ng-if='details.encounter.diagnosis.length > 0'>
+					<div ng-repeat='diagnosis in details.encounter.diagnosis'>
+						<div class='col-sm-5'><b>Code</b></div>
+						<div class='col-sm-7'>{{diagnosis.code}}</div>
+					</div>
+				</div>
+				<small>details from standard XML</small>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-sm-12'>
+			<div class='pull-right'>
+				<ul uib-pagination class='pagination-sml' ng-model='searchParameters.currentPage' 
+					total-items='data.total' ng-change='pageChanged()'
+					max-size='5', boundary-link-numbers='true'></ul>
+			</div>
+		</div>
+	</div>
+</div>

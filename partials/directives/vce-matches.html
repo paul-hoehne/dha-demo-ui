@@ -1,0 +1,7 @@
+<div>
+	<div ng-repeat="match in matches">
+		<div ng-if="match.fragment.length > 1">
+			{{match.fragment[0]}} <span class='vce-match'>{{match.fragment[1].match}}</span> {{match.fragment[2]}}
+		</div>
+	</div>
+</div>

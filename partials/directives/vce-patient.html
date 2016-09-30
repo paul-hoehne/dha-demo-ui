@@ -1,0 +1,15 @@
+<div class='row'>
+	<div class='col-sm-1'>
+		<h1 class='vce-logo vce-patient' aria-label='patient record'>P</h1>
+	</div>
+	<div class='col-sm-11'>
+		<h4>{{patient.data.lastName}}, {{patient.data.firstName}} <small>{{patient.data.id}}</small></h4>
+		<p>
+			Service status is {{patient.data.serviceStatus}}.  Patient enrolled 
+			{{patient.data.enrollmentDate | date:'shortDate'}}.  
+			Birth date: {{patient.data.birthDate | date:'shortDate' }}
+		</p>
+		<vce-matches matches="patient.matches"></vce-matches>
+	</div>
+	<hr/>
+</div>
